@@ -1,0 +1,23 @@
+<h1>Home</h1>
+<p>Bienvenido {{user.name}}, en esta página podrás editar tus datos personales, ver y editar tus mascotas actuales e
+    incluso agregar nuevas mascotas</p>
+<a href="/user-edit">
+    <h5>Editar mis datos</h5>
+</a>
+<div>
+    <h4>Tus mascotas registradas</h4>
+    <p>Toca el nombre de tu mascota si quieres ver y editar sus datos</p>
+    <ul>
+        <li *ngFor="let pet of user.pets">
+            <button type="button" class="btn btn-link">{{pet.name}}</button>
+            <button class="btn btn-primary" (click)="editPet(pet)" style="margin-left: 10px;"> Edit</button>
+            <button class="btn btn-danger" (click)="deletePet(pet)" style="margin-left: 12px;"> Delete</button>
+            <button type="button" class="btn btn-link" (click)="getQR(pet.qrcode.id)">Descargar código QR</button>
+            <hr />
+        </li>
+    </ul>
+</div>
+<div>
+    <button class="btn btn-success" (click)="addPet()">
+        Agregar
+    </button>
