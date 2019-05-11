@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Role } from '../role/role';
-import { UserService } from 'src/app/services/user/user.service';
+import { UserService } from '../../services/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PetComponent } from '../pet/pet.component';
 
@@ -15,7 +15,6 @@ export class UserComponent implements OnInit {
   id: string;
   name: string;
   lastName: string;
-  dni: string;
   email: string;
   username: string;
   telephone: string;

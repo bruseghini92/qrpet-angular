@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 offset-md-3">
-                <h3>Add pet</h3>
+                <h3>Agregar mascota</h3>
                 <form [formGroup]="petForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label>Name</label>
@@ -31,9 +31,10 @@
                             <div *ngIf="f.castration.errors.required">Last Name is required</div>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label>Lost</label>
+                        <label>
+                            <h4>Lost</h4>
+                        </label>
                         <input type="radio" formControlName="lost" value="true" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.lost.errors }" /><i>Yes</i>
                         <input type="radio" formControlName="lost" value="false" class="form-control"
@@ -43,25 +44,55 @@
                             <div *ngIf="f.lost.errors.lost">Email must be a valid email address</div>
                         </div>
                     </div>
-                    <!--
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Password is required</div>
-                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        <label>
+                            <h4>Mating</h4>
+                        </label>
+                        <input type="radio" formControlName="mating" value="true" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.mating.errors }" /><i>Yes</i>
+                        <input type="radio" formControlName="mating" value="false" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.mating.errors }" /><i>No</i>
+                        <div *ngIf="submitted && f.mating.errors" class="invalid-feedback">
+                            <div *ngIf="f.mating.errors.required">Email is required</div>
+                            <div *ngIf="f.mating.errors.lost">Email must be a valid email address</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Confirm Password</label>
-                        <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
-                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
-                            <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                        <label>
+                            <h4>Adoptable</h4>
+                        </label>
+                        <input type="radio" formControlName="adoptable" value="true" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.adoptable.errors }" /><i>Yes</i>
+                        <input type="radio" formControlName="adoptable" value="false" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.adoptable.errors }" /><i>No</i>
+                        <div *ngIf="submitted && f.adoptable.errors" class="invalid-feedback">
+                            <div *ngIf="f.adoptable.errors.required">Email is required</div>
+                            <div *ngIf="f.adoptable.errors.lost">Email must be a valid email address</div>
                         </div>
-                    </div>-->
+                    </div>
                     <div class="form-group">
-                        <button class="btn btn-primary">Register</button>
+                        <label>
+                            <h4>Especie</h4>
+                        </label>
+                        <select class="form-control" [(ngModel)]="selectedSpecie" (change)="doSomething()"
+                            [ngModelOptions]="{standalone: true}">
+                            <option disabled selected>Please select...</option>
+                            <option *ngFor="let specie of species" [ngValue]="specie">{{ specie.name }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <h4>Raza</h4>
+                        </label>
+                        <select class="form-control" [(ngModel)]="selectedRace" [ngModelOptions]="{standalone: true}"
+                            required>
+                            <option [ngValue]="" disabled>Selecciona a que raza pertenece tu mascota</option>
+                            <option [ngValue]=race *ngFor="let race of races">
+                                {{race.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Añadir</button>
                     </div>
                 </form>
             </div>

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
+import { UserService } from '../../services/user/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { PetService } from 'src/app/services/pet/pet.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { PetService } from '../../services/pet/pet.service';
 import { PetComponent } from './pet.component';
 import { Pet } from './pet';
 
@@ -34,9 +34,10 @@ export class PetEditComponent implements OnInit {
             id: [''],
             name: [''],
             birthdate: [''],
+            mating: [null, Validators.required],
+            adoptable: [null, Validators.required],
             castration: [null, Validators.required],
             lost: [null, Validators.required],
-            qrcode: [],
             species: [''],
             races: ['']
         });

@@ -6,7 +6,6 @@ export class User {
     id: string;
     name: string;
     lastName: string;
-    dni: string;
     email: string;
     username: string;
     telephone: string;
@@ -15,9 +14,8 @@ export class User {
     state: string;
     city: string;
     country: string;
-    //password : string;
-    //accessToken?: string;
-    pets: Pet[]
+    password : string;
+    //pets: Pet[]
 
     public constructor(init?: Partial<User>) {
         Object.assign(this, init);

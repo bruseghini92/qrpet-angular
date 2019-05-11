@@ -25,8 +25,9 @@ export class AuthenticationService {
     }
 
     login(usernameOrEmail: string, password: string) {
+        //return this.http.post<UserComponent>('http://qrpets.us-west-2.elasticbeanstalk.com/api/auth/signin', { usernameOrEmail, password }, { observe: 'response' }).pipe(tap(res => {
         return this.http.post<UserComponent>('http://localhost:8080/api/auth/signin', { usernameOrEmail, password }, { observe: 'response' }).pipe(tap(res => {
-            localStorage.setItem('accessToken', res.headers.get('authorization'));
+localStorage.setItem('accessToken', res.headers.get('Authorization'));
             if (res) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(res.body));

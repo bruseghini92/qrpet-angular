@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -11,18 +11,20 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { PetComponent } from './_models/pet/pet.component';
-import { RaceComponent } from './_models/races/races';
-import { SpecieComponent } from './_models/species/species';
+import { RaceComponent } from './_models/races/races.component';
+import { SpecieComponent } from './_models/species/species.component';
 import { UserComponent } from './_models/user/user.component';
 import { PetAddComponent } from './_models/pet/pet-add.component';
 import { UserEditComponent } from './_models/user/user-edit.component';
 import { PetEditComponent } from './_models/pet/pet-edit.component';
+import { Role } from './_models/role/role';
 
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
+        FormsModule,
         HttpClientModule,
         routing,
         JwtModule.forRoot({
@@ -42,10 +44,11 @@ import { PetEditComponent } from './_models/pet/pet-edit.component';
         PetComponent,
         PetAddComponent,
         UserComponent,
+        Role,
         PetEditComponent,
         UserEditComponent,
-        //RaceComponent,
-        //SpecieComponent,
+        RaceComponent,
+        SpecieComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserComponent } from '../user/user.component';
-import { PetService } from 'src/app/services/pet/pet.service';
+import { PetService } from '../../services/pet/pet.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RaceComponent } from '../races/races';
-import { SpecieComponent } from '../species/species';
+import { RaceComponent } from '../races/races.component';
+import { SpecieComponent } from '../species/species.component';
 
 @Component({
   selector: 'app-pet',
@@ -11,10 +11,13 @@ import { SpecieComponent } from '../species/species';
   styleUrls: ['./pet.component.css']
 })
 export class PetComponent implements OnInit {
+  
   id: string;
   name: string;
   user: UserComponent;
   castration: boolean;
+  mating: boolean;
+  adoptable: boolean;
   lost: boolean;
   birthdate: Date;
   species: SpecieComponent;

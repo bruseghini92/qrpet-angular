@@ -9,14 +9,14 @@ import { UserService } from '../../services/user/user.service';
 })
 export class UserDetailComponent implements OnInit {
 
-  product: any;
+  pet: any;
 
   constructor(public rest: UserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.rest.getProduct(this.route.snapshot.params['id']).subscribe((data: {}) => {
       console.log(data);
-      this.product = data;
+      this.pet = data;
     });
   }
 

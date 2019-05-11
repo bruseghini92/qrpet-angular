@@ -1,4 +1,17 @@
-export class Role {
-    id : string;
-    name : string;
+import { OnInit, Component } from '@angular/core';
+
+
+@Component({
+    selector: 'app-role',
+    templateUrl: './role.component.html',
+    styleUrls: ['./role.component.css']
+  })
+
+export class Role implements OnInit{
+    id: string;
+    name: string;
+
+    ngOnInit(){
+        
+    }
 }

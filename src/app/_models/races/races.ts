@@ -1,18 +1,9 @@
-import { OnInit } from '@angular/core';
+export class Race {
 
-import { SpecieComponent } from '../species/species';
+    id: string;
+    name: string;
 
-export class RaceComponent implements OnInit {
-
-    id : string;
-    name : string;
-    specie : SpecieComponent;
-  
-    constructor() { }
-  
-    ngOnInit() {
-      
+    public constructor(init?: Partial<Race>) {
+        Object.assign(this, init);
     }
-  
-  }
-  
+}

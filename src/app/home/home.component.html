@@ -12,7 +12,7 @@
             <button type="button" class="btn btn-link">{{pet.name}}</button>
             <button class="btn btn-primary" (click)="editPet(pet)" style="margin-left: 10px;"> Edit</button>
             <button class="btn btn-danger" (click)="deletePet(pet)" style="margin-left: 12px;"> Delete</button>
-            <button type="button" class="btn btn-link" (click)="getQR(pet.qrcode.id)">Descargar código QR</button>
+            <button type="button" class="btn btn-link" (click)="getQR(pet.id)">Descargar código QR</button>
             <hr />
         </li>
     </ul>

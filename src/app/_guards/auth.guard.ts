@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
         private router: Router,
         private authenticationService: AuthenticationService
     ) { }
-/*
+
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const currentUser = this.authenticationService.currentUserValue;
         if (currentUser) {
@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
         // not logged in so redirect to login page with the return url
         this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         return false;
-    }*/
+    }/*
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         if (this.authenticationService.loggedIn) {
             return true;
@@ -31,5 +31,5 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         // you can save redirect url so after authing we can move them back to the page they requested
         return false;
-      }
+      }*/
 }

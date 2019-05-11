@@ -1,7 +1,7 @@
-import { Races } from './races';
+import { RaceComponent } from './races.component';
 
 describe('Races', () => {
   it('should create an instance', () => {
-    expect(new Races()).toBeTruthy();
+    expect(new RaceComponent()).toBeTruthy();
   });
 });
