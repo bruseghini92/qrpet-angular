@@ -1,23 +1,50 @@
-<h1>Home</h1>
-<p>Bienvenido {{user.name}}, en esta página podrás editar tus datos personales, ver y editar tus mascotas actuales e
-    incluso agregar nuevas mascotas</p>
-<a href="/user-edit">
-    <h5>Editar mis datos</h5>
-</a>
-<div>
-    <h4>Tus mascotas registradas</h4>
-    <p>Toca el nombre de tu mascota si quieres ver y editar sus datos</p>
-    <ul>
-        <li *ngFor="let pet of user.pets">
-            <button type="button" class="btn btn-link">{{pet.name}}</button>
-            <button class="btn btn-primary" (click)="editPet(pet)" style="margin-left: 10px;"> Edit</button>
-            <button class="btn btn-danger" (click)="deletePet(pet)" style="margin-left: 12px;"> Delete</button>
-            <button type="button" class="btn btn-link" (click)="getQR(pet.id)">Descargar código QR</button>
-            <hr />
-        </li>
-    </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mb-5">
+            <h1>Mascotas</h1>
+            <hr>
+            <p>Toca el nombre de tu mascota si quieres ver y editar sus datos</p>
+            <ul class="list-group">
+                <li *ngFor="let pet of pets" class="list-group-item">
+                    <ul class="list-inline mx-auto justify-content-center">
+                        <li class="list-inline-item text-center"><button type="button" class="btn btn-link btn-md"
+                                (click)="detailPet(pet.id)">{{pet.name}}</button></li>
+                        <li class="list-inline-item text-center"><button type="button" class="btn btn-link btn-md"
+                                (click)="detailPet(pet.id)" disabled>{{pet.races.name}}</button></li>
+                        <li class="list-inline-item text-center"><button type="button" class="btn btn-link btn-md"
+                                (click)="detailPet(pet.id)" disabled>{{pet.species.name}}</button></li>
+                        <li class="list-inline-item text-center"><button type="button" class="btn btn-link btn-md"
+                                (click)="getQR(pet.id)"><img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/220px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                                    alt="QRCode" width="30" height="30"></button></li>
+                        <li class="list-inline-item text-center" *ngIf="pet.lost"><button type="button"
+                                class="btn btn-danger btn-md" (click)="lostPet(pet.id)">Extravío</button></li>
+                        <li class="list-inline-item text-center" *ngIf="!pet.lost"><button type="button"
+                                class="btn btn-success btn-md" (click)="lostPet(pet.id)">Extravío</button></li>
+                        <li class="list-inline-item text-center" *ngIf="pet.adoption"><button type="button"
+                                class="btn btn-success btn-md" (click)="adoptionPet(pet.id)">Adopción</button></li>
+                        <li class="list-inline-item text-center" *ngIf="!pet.adoption"><button type="button"
+                                class="btn btn-danger btn-md" (click)="adoptionPet(pet.id)">Adopción</button></li>
+                        <li class="list-inline-item text-center" *ngIf="pet.castration"><button type="button"
+                                class="btn btn-danger btn-md" (click)="castrationPet(pet.id)">Castración</button></li>
+                        <li class="list-inline-item text-center" *ngIf="!pet.castration"><button type="button"
+                                class="btn btn-success btn-md" (click)="castrationPet(pet.id)">Castración</button></li>
+                        <li class="list-inline-item text-center" *ngIf="pet.adoption"><button type="button"
+                                class="btn btn-danger btn-md" (click)="matingPet(pet.id)">Cruza</button></li>
+                        <li class="list-inline-item text-center" *ngIf="!pet.adoption"><button type="button"
+                                class="btn btn-success btn-md" (click)="matingPet(pet.id)">Cruza</button></li>
+                    </ul>
+                </li>
+            </ul>
+            <br>
+            <button class="btn btn-primary" (click)="addPet()">
+                Agregar
+            </button>
+        </div>
+        <div class="col-md-4 mb-5">
+            <h1>Emoticon</h1>
+            <hr>
+            Ya veremos que ponemos aca
+        </div>
+    </div>
 </div>
-<div>
-    <button class="btn btn-success" (click)="addPet()">
-        Agregar
-    </button>

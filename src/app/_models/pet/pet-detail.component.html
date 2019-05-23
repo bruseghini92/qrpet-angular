@@ -1,11 +1,42 @@
-<div *ngIf="product" class="products">
-  <h2>{{product.prod_name | uppercase}} Details</h2>
-  <div><span>Description: </span>{{product.prod_desc}}</div>
-  <div><span>Price: </span>{{product.prod_price}}</div>
-  <div><span>Update Date: </span>{{product.updated_at | date}}</div>
-  <div>
-    <button routerLink="/product-edit/{{product._id}}">
-      Edit
-    </button>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 mb-5">
+      <h3>Detalles</h3>
+      <hr>
+      <div *ngIf="pet">
+        <ul class="list-group">
+          <li class="list-group-item">Nombre: {{pet.name}}</li>
+          <li class="list-group-item">Castrado/a: <div *ngIf="pet.castration;else false_content"> Sí</div>
+            <ng-template #false_content>No</ng-template>
+          </li>
+          <li class="list-group-item">Crias: <div *ngIf="pet.mating;else false_content"> Sí</div>
+            <ng-template #false_content>No</ng-template>
+          </li>
+          <li class="list-group-item">Adopción: <div *ngIf="pet.adoptable;else false_content"> Sí</div>
+            <ng-template #false_content>No</ng-template>
+          </li>
+          <li class="list-group-item">Cumpleaños: {{pet.birthdate | date}}</li>
+          <li class="list-group-item">Perdido/a: <div *ngIf="pet.lost;else false_content"> Sí</div>
+            <ng-template #false_content>No</ng-template>
+          </li>
+          <li class="list-group-item">Raza: {{pet.races.name}}</li>
+          <li class="list-group-item">Especie: {{pet.species.name}}</li>
+        </ul>
+        <br>
+        <div>
+          <button class="btn btn-primary" (click)="editPet(pet.id)" style="margin-left: 10px;"> Editar </button>
+          <button class="btn btn-danger" (click)="deletePet(pet)" style="margin-left: 10px;"> Eliminar </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 mb-5">
+      <h3>Fotos</h3>
+      <hr>
+      <p>Disponible próximamente...</p>
+    </div>
+    <div class="col-md-2 mb-5">
+      <h3>Consejos</h3>
+        <hr>
+    </div>
   </div>
 </div>

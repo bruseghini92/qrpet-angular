@@ -18,6 +18,16 @@ import { PetAddComponent } from './_models/pet/pet-add.component';
 import { UserEditComponent } from './_models/user/user-edit.component';
 import { PetEditComponent } from './_models/pet/pet-edit.component';
 import { Role } from './_models/role/role';
+import { LostPetComponent } from './lostPet/lostPet.component';
+import { AdoptablePetsComponent } from './adoptablePets/adoptablePets.component';
+import { AdminComponent } from './admin/admin.component';
+import { PetDetailComponent } from './_models/pet/pet-detail.component';
+import { RegisterComponent } from './register/register.component';
+import { UserAdminComponent } from './admin/users/user-admin.component';
+import { PetAdminComponent } from './admin/pets/pet-admin.component';
+import { SpecieAdminComponent } from './admin/species/specie-admin.component';
+import { RaceAdminComponent } from './admin/races/race-admin.component';
+import { IndexComponent } from './index/index.component';
 
 
 @NgModule({
@@ -42,13 +52,23 @@ import { Role } from './_models/role/role';
         HomeComponent,
         LoginComponent,
         PetComponent,
+        RegisterComponent,
+        PetDetailComponent,
         PetAddComponent,
         UserComponent,
+        LostPetComponent,
+        AdoptablePetsComponent,
         Role,
         PetEditComponent,
         UserEditComponent,
         RaceComponent,
         SpecieComponent,
+        AdminComponent,
+        UserAdminComponent,
+        PetAdminComponent,
+        SpecieAdminComponent,
+        RaceAdminComponent,
+        IndexComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

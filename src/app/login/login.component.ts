@@ -5,12 +5,12 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../services/authentication.service';
 
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({ selector: 'app-login',templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
     submitted = false;
-    returnUrl: string;
+    returnUrl: string = '/home';
     error = '';
 
     constructor(
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
     }
 
     // convenience getter for easy access to form fields

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Pet } from './pet';
 import { PetService } from '../../services/pet/pet.service';
 import { RaceService } from '../../services/races/race.service';
@@ -35,10 +35,10 @@ export class PetAddComponent implements OnInit {
       id: [''],
       name: [''],
       birthdate: [''],
-      castration: [''],
-      mating: [''],
-      adoptable: [''],
-      lost: [''],
+      castration: ['false'],
+      mating: ['false'],
+      adoptable: ['false'],
+      lost: ['false'],
       species: [this.species],
       races: [this.races]
     });
@@ -58,6 +58,7 @@ export class PetAddComponent implements OnInit {
     this.newPet = new Pet(this.petForm.value);
     this.newPet.races = this.selectedRace;
     this.newPet.species = this.selectedSpecie;
+    console.log(JSON.stringify(this.newPet))
     this.rest.addPet(this.newPet).subscribe((result) => {
       this.router.navigate(['']);
     }, (err) => {

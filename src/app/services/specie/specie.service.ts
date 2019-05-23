@@ -6,8 +6,8 @@ import { PetComponent } from '../../_models/pet/pet.component';
 import { Pet } from '../../_models/pet/pet';
 import { SpecieComponent } from '../../_models/species/species.component';
 
-//const endpoint = 'http://qrpets.us-west-2.elasticbeanstalk.com/api/';
-const endpoint = 'http://localhost:8080/api';
+import { apiUrl } from '../../url.constants';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -27,39 +27,17 @@ export class SpecieService {
     return body || {};
   }
 
-  getSpecies2(){
-    return this.http.get<SpecieComponent[]>(endpoint + '/species');
-  }
-
-
   getSpecies(): Observable<SpecieComponent[]> {
-    return this.http.get<any[]>(endpoint + '/species');
+    return this.http.get<any[]>(apiUrl + '/species').pipe(
+      tap((pet) => console.log(`getSpecies`)),
+      catchError(this.handleError<any>('getSpecies'))
+    );
   }
 
   getSpecie(id): Observable<any> {
-    return this.http.get(endpoint + '/species/' + id).pipe(
-      map(this.extractData));
-  }
-
-  addPet(pet): Observable<any> {
-    console.log(pet);
-    return this.http.post<any>(endpoint + 'pets', JSON.stringify(pet), httpOptions).pipe(
-      tap((pet) => console.log(`added pet w/ id=${pet.id}`)),
-      catchError(this.handleError<any>('addPet'))
-    );
-  }
-
-  updatePet(pet: Pet): Observable<any> {
-    return this.http.put(endpoint + 'pets/', JSON.stringify(pet), httpOptions).pipe(
-      tap(_ => console.log(`updated pet id=${pet.id}`)),
-      catchError(this.handleError<any>('updatePet'))
-    );
-  }
-
-  deletePet(id): Observable<any> {
-    return this.http.delete<any>(endpoint + 'pets/' + id, httpOptions).pipe(
-      tap(_ => console.log(`deleted pet id=${id}`)),
-      catchError(this.handleError<any>('deletePet'))
+    return this.http.get(apiUrl + '/species/' + id).pipe(
+      tap((pet) => console.log(`getSpecie w/ id=${id}`)),
+      catchError(this.handleError<any>('getSpecie'))
     );
   }
 
