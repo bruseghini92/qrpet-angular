@@ -1,0 +1,31 @@
+<h1>Usuarios</h1>
+<table mdbTable striped="true">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Username</th>
+            <th>Dirección</th>
+            <th>Ciudad</th>
+            <th>Provincia</th>
+            <th>País</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr mdbTableCol *ngFor="let user of allUsers">
+            <th scope="row">{{user.id}}</th>
+            <td>{{user.name}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.telephone}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.address}}</td>
+            <td>{{user.city}}</td>
+            <td>{{user.state}}</td>
+            <td>{{user.country}}</td>
+            <td><button type="button" class="btn btn-primary" click="editUser()">Editar</button></td>
+            <td><button type="button" class="btn btn-danger" click="deleteUser()">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 offset-md-3">
+            <h1>Mascotas perdidas</h1>
+            <ul>
+                <li *ngFor="let pet of pets">
+                    <button type="button" class="btn btn-link">{{pet.name}}</button>
+                    <hr />
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

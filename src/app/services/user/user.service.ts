@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
-const endpoint = 'http://localhost:8080/api/';
+import { apiUrl } from '../../url.constants';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -24,32 +25,32 @@ export class UserService {
   }
 
   getProducts(): Observable<any> {
-    return this.http.get(endpoint + 'users').pipe(
+    return this.http.get(apiUrl + 'users').pipe(
       map(this.extractData));
   }
 
   getProduct(id): Observable<any> {
-    return this.http.get(endpoint + 'users/' + id).pipe(
+    return this.http.get(apiUrl + 'users/' + id).pipe(
       map(this.extractData));
   }
 
   addProduct(product): Observable<any> {
     console.log(product);
-    return this.http.post<any>(endpoint + 'users', JSON.stringify(product), httpOptions).pipe(
+    return this.http.post<any>(apiUrl + 'users', JSON.stringify(product), httpOptions).pipe(
       tap((product) => console.log(`added user w/ id=${product.id}`)),
       catchError(this.handleError<any>('addUser'))
     );
   }
 
   updateUser(user): Observable<any> {
-    return this.http.put(endpoint + 'users/', JSON.stringify(user), httpOptions).pipe(
+    return this.http.put(apiUrl + 'users/', JSON.stringify(user), httpOptions).pipe(
       tap(_ => console.log(`updated user id=${user.id}`)),
       catchError(this.handleError<any>('updateUser' + "elusuariocomecaca" + JSON.stringify(user)))
     );
   }
 
   deleteProduct(id): Observable<any> {
-    return this.http.delete<any>(endpoint + 'products/' + id, httpOptions).pipe(
+    return this.http.delete<any>(apiUrl + 'products/' + id, httpOptions).pipe(
       tap(_ => console.log(`deleted user id=${id}`)),
       catchError(this.handleError<any>('deleteUser'))
     );

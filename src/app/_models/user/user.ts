@@ -15,7 +15,6 @@ export class User {
     city: string;
     country: string;
     password : string;
-    //pets: Pet[]
 
     public constructor(init?: Partial<User>) {
         Object.assign(this, init);

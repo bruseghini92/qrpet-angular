@@ -6,8 +6,8 @@ import { PetComponent } from '../../_models/pet/pet.component';
 import { Pet } from '../../_models/pet/pet';
 import { RaceComponent } from '../../_models/races/races.component';
 
-//const endpoint = 'http://qrpets.us-west-2.elasticbeanstalk.com/api/';
-const endpoint = 'http://localhost:8080/api/';
+import { apiUrl } from '../../url.constants';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -28,35 +28,35 @@ export class RaceService {
   }
 
   getPets(): Observable<PetComponent[]> {
-    return this.http.get<PetComponent[]>(endpoint + 'pets');
+    return this.http.get<PetComponent[]>(apiUrl + '/pets');
   }
 
   getRacesbySpecies(id: any): Observable<RaceComponent[]> {
-    return this.http.get<RaceComponent[]>(endpoint + 'races/getracesfromspecie/' + id);
+    return this.http.get<RaceComponent[]>(apiUrl + '/races/getracesfromspecie/' + id);
   }
 
   getPet(id): Observable<any> {
-    return this.http.get(endpoint + 'pets/info/' + id).pipe(
+    return this.http.get(apiUrl + '/pets/info/' + id).pipe(
       map(this.extractData));
   }
 
   addPet(pet): Observable<any> {
     console.log(pet);
-    return this.http.post<any>(endpoint + 'pets', JSON.stringify(pet), httpOptions).pipe(
+    return this.http.post<any>(apiUrl + '/pets', JSON.stringify(pet), httpOptions).pipe(
       tap((pet) => console.log(`added pet w/ id=${pet.id}`)),
       catchError(this.handleError<any>('addPet'))
     );
   }
 
   updatePet(pet: Pet): Observable<any> {
-    return this.http.put(endpoint + 'pets/', JSON.stringify(pet), httpOptions).pipe(
+    return this.http.put(apiUrl + '/pets/', JSON.stringify(pet), httpOptions).pipe(
       tap(_ => console.log(`updated pet id=${pet.id}`)),
       catchError(this.handleError<any>('updatePet'))
     );
   }
 
   deletePet(id): Observable<any> {
-    return this.http.delete<any>(endpoint + 'pets/' + id, httpOptions).pipe(
+    return this.http.delete<any>(apiUrl + '/pets/' + id, httpOptions).pipe(
       tap(_ => console.log(`deleted pet id=${id}`)),
       catchError(this.handleError<any>('deletePet'))
     );

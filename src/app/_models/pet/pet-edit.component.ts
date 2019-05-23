@@ -1,10 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../services/user/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from '../../services/authentication.service';
 import { PetService } from '../../services/pet/pet.service';
-import { PetComponent } from './pet.component';
 import { Pet } from './pet';
 
 @Component({
@@ -14,16 +11,10 @@ import { Pet } from './pet';
 })
 export class PetEditComponent implements OnInit {
 
-    //currentUser : UserComponent;
     petForm: FormGroup;
-    //editedUser : User;
     submitted = false;
 
     constructor(private formBuilder: FormBuilder, public rest: PetService, private route: ActivatedRoute, private router: Router) {
-        //this.currentUser = a.currentUserValue;
-    }
-
-    ngOnInit() {
         let petId = localStorage.getItem("editPetId");
         if (!petId) {
             alert("Invalid action.")
@@ -32,19 +23,22 @@ export class PetEditComponent implements OnInit {
         }
         this.petForm = this.formBuilder.group({
             id: [''],
-            name: [''],
-            birthdate: [''],
+            name: ['', Validators.required],
+            birthdate: ['', Validators.required],
             mating: [null, Validators.required],
             adoptable: [null, Validators.required],
             castration: [null, Validators.required],
             lost: [null, Validators.required],
-            species: [''],
-            races: ['']
+            species: ['', Validators.required],
+            races: ['', Validators.required]
         });
-        this.rest.getPet(+petId)
+        this.rest.getPet(petId)
             .subscribe(data => {
                 this.petForm.setValue(data);
             });
+    }
+
+    ngOnInit() {
     }
 
     onSubmit() {

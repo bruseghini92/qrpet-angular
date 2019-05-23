@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Role } from '../role/role';
 import { UserService } from '../../services/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PetComponent } from '../pet/pet.component';
 
 @Component({
   selector: 'app-user',
@@ -24,33 +23,9 @@ export class UserComponent implements OnInit {
   state: string;
   city: string;
   country: string;
-  //pets : PetComponent[];
 
   constructor(public rest: UserService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    //this.getProducts();
   }
-  /*
-    getProducts() {
-      this.users = [];
-      this.rest.getProducts().subscribe((data: {}) => {
-        console.log(data);
-        this.users = data;
-      });
-    }
-  */
-  add() {
-    this.router.navigate(['/user-add']);
-  }
-  /*
-    delete(id) {
-      this.rest.deleteProduct(id)
-        .subscribe(res => {
-            this.getProducts();
-          }, (err) => {
-            console.log(err);
-          }
-        );
-    }*/
 }

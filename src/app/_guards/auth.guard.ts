@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-import { Observable } from 'rxjs';
-
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -14,22 +12,16 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const currentUser = this.authenticationService.currentUserValue;
         if (currentUser) {
-            // logged in so return true
+            if (route.data.role && route.data.role.indexOf(localStorage.getItem('role')) === -1) {
+                // role not authorised so redirect to home page
+                this.router.navigate(['/']);
+                return false;
+            }
             return true;
         }
 
         // not logged in so redirect to login page with the return url
         this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         return false;
-    }/*
-    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        if (this.authenticationService.loggedIn) {
-            return true;
-        }
-    
-        // navigate to login page
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-        // you can save redirect url so after authing we can move them back to the page they requested
-        return false;
-      }*/
+    }
 }

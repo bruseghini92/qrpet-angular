@@ -1,23 +1,67 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-item nav-link" routerLink="admin" *ngIf="isAdmin">Admin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" routerLink="home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" routerLink="adoptable-pets">Adoptar mascotas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" routerLink="lost-pets">Mascotas perdidas</a>
+            </li>
+        </ul>
     </div>
-</nav>
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Login</a>
-        <a class="nav-item nav-link" routerLink="/">Register</a>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" routerLink="">QR Pets</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
-</nav>
-
-<!-- main app container -->
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <router-outlet></router-outlet>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" *ngIf="!currentUser">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <button type="button" class="btn btn-primary" routerLink="login">Ingresar</button>
+            </li>
+            <li>
+                <div class="nav-link"> ó </div>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-success" routerLink="register">Registrar</button>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" *ngIf="currentUser">
+        <ul class="navbar-nav ml-auto">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success">{{currentUser.name}} {{currentUser.lastName}}</button>
+                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="user-edit">Mis datos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logout()">Salir</a>
+                </div>
             </div>
-        </div>
+        </ul>
+    </div>
+</nav>
+<!--Main-->
+<div class="jumbotron jumbotron-fluid bg-white text-dark">
+    <div class="container">
+        <router-outlet></router-outlet>
     </div>
 </div>
+<!--Footer-->
+<nav class="navbar navbar-default mt-5">
+    <div class="navbar-expand m-auto navbar-text text-black">
+        <div class="container">
+            <p class="m-0 text-center text-black">Copyright &copy; QR Pets 2019</p>
+        </div>
+    </div>
+</nav>

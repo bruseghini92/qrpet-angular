@@ -1,0 +1,31 @@
+<h1>Mascotas</h1>
+<table mdbTable striped="true">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Perdido</th>
+            <th>Fecha de nacimiento</th>
+            <th>Castración</th>
+            <th>Mating</th>
+            <th>Raza</th>
+            <th>Especie</th>
+            <th>Adoptable</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr mdbTableCol *ngFor="let pet of allPets">
+            <th scope="row">{{pet.id}}</th>
+            <td>{{pet.name}}</td>
+            <td>{{pet.lost}}</td>
+            <td>{{pet.birthdate}}</td>
+            <td>{{pet.castration}}</td>
+            <td>{{pet.mating}}</td>
+            <td>{{pet.races.name}}</td>
+            <td>{{pet.species.name}}</td>
+            <td>{{pet.adoptable}}</td>
+            <td><button type="button" class="btn btn-primary" click="editPet()">Editar</button></td>
+            <td><button type="button" class="btn btn-danger" click="deletePet()">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>
