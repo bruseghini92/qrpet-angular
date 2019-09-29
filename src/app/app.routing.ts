@@ -13,7 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserAdminComponent } from './admin/users/user-admin.component';
 import { PetAdminComponent } from './admin/pets/pet-admin.component';
 import { SpecieAdminComponent } from './admin/species/specie-admin.component';
-import { RaceAdminComponent } from './admin/races/race-admin.component';
+import { BreedAdminComponent } from './admin/breeds/breed-admin.component';
 import { IndexComponent } from './index/index.component';
 
 
@@ -65,8 +65,8 @@ const appRoutes: Routes = [
         data: { role: 'ROLE_ADMIN' }
     },
     {
-        path: 'app-admin-race',
-        component: RaceAdminComponent,
+        path: 'app-admin-Breed',
+        component: BreedAdminComponent,
         canActivate: [AuthGuard],
         data: { role: 'ROLE_ADMIN' }
     },

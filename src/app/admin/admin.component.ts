@@ -21,8 +21,8 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['app-admin-pet']);
   }
 
-  race() {
-    this.router.navigate(['app-admin-race']);
+  Breed() {
+    this.router.navigate(['app-admin-Breed']);
   }
 
   specie() {

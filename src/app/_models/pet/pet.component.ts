@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserComponent } from '../user/user.component';
 import { PetService } from '../../services/pet/pet.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RaceComponent } from '../races/races.component';
+import { BreedComponent } from '../breeds/breeds.component';
 import { SpecieComponent } from '../species/species.component';
 
 @Component({
@@ -20,8 +20,10 @@ export class PetComponent implements OnInit {
   adoptable: boolean;
   lost: boolean;
   birthdate: Date;
-  species: SpecieComponent;
-  races: RaceComponent;
+  //species: SpecieComponent;
+  breeds: BreedComponent;
+  profilePic: any;
+  qrFile: string;
 
   pets: any = [];
 

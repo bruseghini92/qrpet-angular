@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Role } from '../role/role';
 import { UserService } from '../../services/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PetComponent } from '../pet/pet.component';
 
 @Component({
   selector: 'app-user',
@@ -18,6 +19,7 @@ export class UserComponent implements OnInit {
   username: string;
   telephone: string;
   password: string;
+  pets: PetComponent[];
   address: string;
   roles: Role[];
   state: string;

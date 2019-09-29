@@ -38,7 +38,7 @@
       "info",
       "time",
       "timeEnd",
-      "trace"
+      "tBreed"
     ],
     "no-empty": false,
     "no-inferrable-types": [

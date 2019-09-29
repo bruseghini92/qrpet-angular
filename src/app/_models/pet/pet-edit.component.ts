@@ -30,7 +30,7 @@ export class PetEditComponent implements OnInit {
             castration: [null, Validators.required],
             lost: [null, Validators.required],
             species: ['', Validators.required],
-            races: ['', Validators.required]
+            Breeds: ['', Validators.required]
         });
         this.rest.getPet(petId)
             .subscribe(data => {

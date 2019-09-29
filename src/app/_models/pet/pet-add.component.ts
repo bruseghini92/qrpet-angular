@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Pet } from './pet';
 import { PetService } from '../../services/pet/pet.service';
-import { RaceService } from '../../services/races/race.service';
+import { BreedService } from '../../services/breeds/breed.service';
 import { SpecieService } from '../../services/specie/specie.service';
 import { Specie } from '../species/species';
-import { Race } from '../races/races';
+import { Breed } from '../breeds/breeds';
 
 @Component({
   selector: 'app-pet-add',
@@ -18,14 +18,14 @@ export class PetAddComponent implements OnInit {
   petForm: FormGroup;
   newPet: Pet;
   submitted = false;
-  races: Race[];
+  breeds: Breed[];
   species: Specie[];
   selectedSpecie: Specie;
-  selectedRace: Race;
+  selectedBreed: Breed;
 
   constructor(private formBuilder: FormBuilder,
     public rest: PetService, private route: ActivatedRoute,
-    private router: Router, private raceService: RaceService,
+    private router: Router, private BreedService: BreedService,
     private speciesService: SpecieService) {
     this.speciesService.getSpecies().subscribe((res) => {
       this.species = res;
@@ -39,8 +39,10 @@ export class PetAddComponent implements OnInit {
       mating: ['false'],
       adoptable: ['false'],
       lost: ['false'],
-      species: [this.species],
-      races: [this.races]
+      //species: [this.species],
+      breeds: [this.breeds],
+      qrFile: [''],
+      profilePic: ['']
     });
   }
 
@@ -56,8 +58,9 @@ export class PetAddComponent implements OnInit {
       return;
     } 
     this.newPet = new Pet(this.petForm.value);
-    this.newPet.races = this.selectedRace;
-    this.newPet.species = this.selectedSpecie;
+    console.log('Selected breed: '+JSON.stringify(this.selectedBreed[0]) + '\n newPet: '+ JSON.stringify(this.newPet));
+    this.newPet.breeds = this.selectedBreed[0];
+    //this.newPet.species = this.selectedSpecie;
     console.log(JSON.stringify(this.newPet))
     this.rest.addPet(this.newPet).subscribe((result) => {
       this.router.navigate(['']);
@@ -67,9 +70,11 @@ export class PetAddComponent implements OnInit {
   }
 
   doSomething() {
-    this.raceService.getRacesbySpecies(this.selectedSpecie.id).subscribe((res) => {
-      this.races = res;
-    })
+    //console.log('breeds: '+JSON.stringify(this.selectedSpecie.breeds));
+    this.breeds = this.selectedSpecie.breeds;
+    /*this.BreedService.getBreedsbySpecies(this.selectedSpecie.id).subscribe((res) => {
+      //this.breeds = this.selectedSpecie;
+    })*/
   }
 
   //esta funcion pedorra hace que puedas acceder desde el formulario con f. a los campos

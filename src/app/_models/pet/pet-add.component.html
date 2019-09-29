@@ -116,11 +116,11 @@
                     <label>
                         Raza
                     </label>
-                    <select class="form-control" [(ngModel)]="selectedRace" [ngModelOptions]="{standalone: true}"
+                    <select class="form-control" [(ngModel)]="selectedBreed" [ngModelOptions]="{standalone: true}"
                         required>
                         <option [ngValue]="" disabled>Selecciona a que raza pertenece tu mascota</option>
-                        <option [ngValue]=race *ngFor="let race of races">
-                            {{race.name}}</option>
+                        <option [ngValue]=breeds *ngFor="let breed of breeds">
+                            {{breed.name}}</option>
                     </select>
                 </div>
                 <div class="form-group">

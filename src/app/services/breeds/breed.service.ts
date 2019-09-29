@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { PetComponent } from '../../_models/pet/pet.component';
 import { Pet } from '../../_models/pet/pet';
-import { RaceComponent } from '../../_models/races/races.component';
+import { BreedComponent } from '../../_models/breeds/breeds.component';
 
 import { apiUrl } from '../../url.constants';
 
@@ -18,7 +18,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class RaceService {
+export class BreedService {
 
   constructor(private http: HttpClient) { }
 
@@ -31,8 +31,8 @@ export class RaceService {
     return this.http.get<PetComponent[]>(apiUrl + '/pets');
   }
 
-  getRacesbySpecies(id: any): Observable<RaceComponent[]> {
-    return this.http.get<RaceComponent[]>(apiUrl + '/races/getracesfromspecie/' + id);
+  getBreedsbySpecies(id: any): Observable<BreedComponent[]> {
+    return this.http.get<BreedComponent[]>(apiUrl + '/Breeds/getBreedsfromspecie/' + id);
   }
 
   getPet(id): Observable<any> {

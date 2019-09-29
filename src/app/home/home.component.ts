@@ -13,15 +13,17 @@ import { Observable } from 'rxjs';
 export class HomeComponent {
 
     user: UserComponent;
-    pets: Pet[];
+    pets: PetComponent[];
 
     constructor(a: AuthenticationService, private router: Router, private petService: PetService) {
         this.user = a.currentUserValue;
-            this.petService.getPets().subscribe((res) => {
-              this.pets = res;
-              localStorage.removeItem('allPets')
-              localStorage.setItem('allPets',JSON.stringify(this.pets))
-            });
+            //this.petService.getPets().subscribe((res) => {
+              //this.pets = res;
+              this.pets = this.user.pets;
+              localStorage.removeItem('allPets');
+              localStorage.setItem('allPets',JSON.stringify(this.pets));
+            //});
+            console.log(JSON.stringify(this.user));
     }
 
     ngOnInit() {

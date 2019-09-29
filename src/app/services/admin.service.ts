@@ -7,7 +7,7 @@ import { PetComponent } from '../_models/pet/pet.component';
 import { apiUrl } from '../url.constants';
 import { UserComponent } from '../_models/user/user.component';
 import { SpecieComponent } from '../_models/species/species.component';
-import { RaceComponent } from '../_models/races/races.component';
+import { BreedComponent } from '../_models/breeds/breeds.component';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -36,7 +36,7 @@ export class AdminService {
         return this.http.get<SpecieComponent[]>(apiUrl + '/admin/species');
     }
 
-    getRaces(): Observable<RaceComponent[]> {
-        return this.http.get<RaceComponent[]>(apiUrl + '/admin/races');
+    getBreeds(): Observable<BreedComponent[]> {
+        return this.http.get<BreedComponent[]>(apiUrl + '/admin/Breeds');
     }
 }

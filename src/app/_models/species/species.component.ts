@@ -1,4 +1,5 @@
 import { OnInit, Component } from '@angular/core';
+import { Breed } from '../breeds/breeds';
 
 
 @Component({
@@ -10,6 +11,7 @@ export class SpecieComponent implements OnInit {
 
   id: string;
   name: string;
+  breeds: Breed[];
 
   public constructor() {
     

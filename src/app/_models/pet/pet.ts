@@ -1,8 +1,5 @@
 import { UserComponent } from '../user/user.component';
-import { SpecieComponent } from '../species/species.component';
-import { RaceComponent } from '../races/races.component';
-import { Specie } from '../species/species';
-import { Race } from '../races/races';
+import { Breed } from '../breeds/breeds';
 
 export class Pet {
 
@@ -14,8 +11,10 @@ export class Pet {
     adoptable: boolean;
     lost: boolean;
     birthdate: Date;
-    species: Specie;
-    races: Race;
+    //species: Specie;
+    breeds: Breed;
+    profilePic: any;
+    qrFile: string;
 
     public constructor(init?: Partial<Pet>) {
         Object.assign(this, init);

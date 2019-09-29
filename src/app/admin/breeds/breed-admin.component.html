@@ -14,11 +14,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr mdbTableCol *ngFor="let race of allRaces">
-            <th scope="row">{{race.id}}</th>
-            <td>{{race.name}}</td>
-            <td><button type="button" class="btn btn-primary" click="editRace()">Editar</button></td>
-            <td><button type="button" class="btn btn-danger" click="deleteRace()">Eliminar</button></td>
+        <tr mdbTableCol *ngFor="let Breed of allBreeds">
+            <th scope="row">{{Breed.id}}</th>
+            <td>{{Breed.name}}</td>
+            <td><button type="button" class="btn btn-primary" click="editBreed()">Editar</button></td>
+            <td><button type="button" class="btn btn-danger" click="deleteBreed()">Eliminar</button></td>
         </tr>
     </tbody>
 </table>

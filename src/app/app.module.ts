@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { PetComponent } from './_models/pet/pet.component';
-import { RaceComponent } from './_models/races/races.component';
+import { BreedComponent } from './_models/breeds/breeds.component';
 import { SpecieComponent } from './_models/species/species.component';
 import { UserComponent } from './_models/user/user.component';
 import { PetAddComponent } from './_models/pet/pet-add.component';
@@ -26,7 +26,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserAdminComponent } from './admin/users/user-admin.component';
 import { PetAdminComponent } from './admin/pets/pet-admin.component';
 import { SpecieAdminComponent } from './admin/species/specie-admin.component';
-import { RaceAdminComponent } from './admin/races/race-admin.component';
+import { BreedAdminComponent } from './admin/breeds/breed-admin.component';
 import { IndexComponent } from './index/index.component';
 
 
@@ -61,13 +61,13 @@ import { IndexComponent } from './index/index.component';
         Role,
         PetEditComponent,
         UserEditComponent,
-        RaceComponent,
+        BreedComponent,
         SpecieComponent,
         AdminComponent,
         UserAdminComponent,
         PetAdminComponent,
         SpecieAdminComponent,
-        RaceAdminComponent,
+        BreedAdminComponent,
         IndexComponent
     ],
     providers: [
